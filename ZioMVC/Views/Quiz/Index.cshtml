@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Rozpocznij test";
+}
+
+<h1>Rozpocznij test</h1>
+
+@using (Html.BeginForm("StartTest", "Quiz", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="nick">Nick:</label>
+        <input type="text" id="nick" name="nick" class="form-control" />
+        <span class="text-danger">@Html.ValidationMessage("Nick")</span>
+    </div>
+    <button type="submit" class="btn btn-primary">Rozpocznij test</button>
+}

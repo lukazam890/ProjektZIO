@@ -1,0 +1,41 @@
+﻿@model ZioMVC.Models.Question
+
+@{
+    ViewData["Title"] = "Pytanie";
+}
+
+<h1>Pytanie</h1>
+
+<p>@Model.QuestionContent</p>
+
+<form method="post" action="@Url.Action("AnswerQuestion", "Quiz")">
+    <input type="hidden" name="questionId" value="@Model.Id" />
+    <div class="form-group">
+        <label>Odpowiedzi:</label>
+        <div>
+            <label>
+                <input type="radio" name="selectedAnswer" value="1" />
+                @Model.Answer1
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="selectedAnswer" value="2" />
+                @Model.Answer2
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="selectedAnswer" value="3" />
+                @Model.Answer3
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="selectedAnswer" value="4" />
+                @Model.Answer4
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Następne pytanie</button>
+</form>
