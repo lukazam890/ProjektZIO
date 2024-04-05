@@ -39,6 +39,7 @@ namespace ProjektZiotest.Controllers
         {
             try
             {
+                test.Id = 0;
                 _testService.AddTest(test);
                 return CreatedAtAction(nameof(GetTestById), new { id = test.Id }, test);
             }
