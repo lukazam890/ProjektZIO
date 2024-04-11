@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjektZiotest.Migrations
 {
     /// <inheritdoc />
-    public partial class nowa1234 : Migration
+    public partial class nowa334 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

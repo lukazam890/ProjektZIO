@@ -12,8 +12,8 @@ using ProjektZiotest.Models;
 namespace ProjektZiotest.Migrations
 {
     [DbContext(typeof(QuizDB))]
-    [Migration("20240404123158_nowa1123")]
-    partial class nowa1123
+    [Migration("20240411175412_nowa334")]
+    partial class nowa334
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

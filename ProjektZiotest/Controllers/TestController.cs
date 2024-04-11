@@ -109,7 +109,7 @@ namespace ProjektZiotest.Controllers
             }
         }
 
-        [HttpPost("{id}/add-questions")]
+        [HttpPut("{id}/add-questions")]
         public IActionResult AddQuestionsToList(int id, List<int> questions)
         {
             try
