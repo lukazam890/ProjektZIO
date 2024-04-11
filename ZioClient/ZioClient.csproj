@@ -121,7 +121,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModelData\HttpClient.cs" />
+    <Compile Include="ModelData\HttpClientTests.cs" />
+    <Compile Include="ModelData\HttpClientQuestion.cs" />
     <Compile Include="ModelData\Question.cs" />
     <Compile Include="ModelData\Test.cs" />
     <Compile Include="Program.cs" />

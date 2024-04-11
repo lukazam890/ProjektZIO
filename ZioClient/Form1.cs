@@ -13,7 +13,8 @@ namespace ZioClient
 {
     public partial class Form1 : Form
     {
-        private static readonly HttpClient httpRequest = new HttpClient();
+        private static readonly HttpClientQuestion httpRequestQ = new HttpClientQuestion();
+        private static readonly HttpClientTest httpRequestT = new HttpClientTest();
         public Form1()
         {
             InitializeComponent();
@@ -21,17 +22,14 @@ namespace ZioClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Question q = httpRequest.GetById(2);
-            textBox1.Text = q.questionContent;
-            q.answer1 = "alaa";
-            httpRequest.AddQuestion(q);
+            Test t = httpRequestT.GetById(1);
+            t.nick = "testowy";
+            httpRequestT.Put(1, t);
+            textBox1.Text = t.nick.ToString();
 
 
-            Test t = new Test();
-            t.date = DateTime.Now;
-            t.nick = "lolek";
-            t.result = 0;
-            httpRequest.AddTest(t);
+
+
         }
     }
 }
