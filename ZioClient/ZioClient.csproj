@@ -125,6 +125,7 @@
     <Compile Include="ModelData\HttpClientQuestion.cs" />
     <Compile Include="ModelData\Question.cs" />
     <Compile Include="ModelData\Test.cs" />
+    <Compile Include="ModelData\TestQuestion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

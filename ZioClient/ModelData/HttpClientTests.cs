@@ -42,29 +42,50 @@ namespace ZioClient.ModelData
             }
 
         }
-        public void Put(int id, List<Question> questions)
+        public void PutQuestion(int id, List<int> questionIds)
         {
-            Test test = GetById(id);
-            var request = new HttpRequestMessage(HttpMethod.Put, url + "/" + id+ "/add-questions");
-            test.questions = questions;
-            var content = new StringContent(JsonSerializer.Serialize(test), null, "application/json");
+            var request = new HttpRequestMessage(HttpMethod.Put, $"{url}/{id}/add-questions");
+            var content = new StringContent(JsonSerializer.Serialize(questionIds), Encoding.UTF8, "application/json");
             request.Content = content;
+
             try
             {
                 var response = client.SendAsync(request).Result;
-                if (response.Content.ReadAsStringAsync().Result == "0")
+                if (response.IsSuccessStatusCode)
                 {
-                    responseCommunicat = "Poprawnie dodano rekord";
+                    responseCommunicat = "Poprawnie dodano pytania do testu.";
                 }
-
                 else
                 {
-                    responseCommunicat = "Operacja dodania rekordu się nie powiodła";
+                    responseCommunicat = "Operacja dodania pytań do testu się nie powiodła.";
                 }
             }
             catch (Exception)
             {
-                responseCommunicat = "Brak połączenia z webApi";
+                responseCommunicat = "Brak połączenia z webApi.";
+            }
+        }
+        public List<Test> GetAll()
+        {
+            try
+            {
+                var response = client.GetStringAsync(url);
+                List<Test> dataObjects = JsonSerializer.Deserialize<List<Test>>(response.Result);
+                if (dataObjects.Count > 0)
+                {
+                    responseCommunicat = "Poprawnie pobrano rekordy";
+                    return dataObjects;
+                }
+                else
+                {
+                    responseCommunicat = "Tabela jest pusta";
+                    return new List<Test>();
+                }
+            }
+            catch (Exception)
+            {
+                responseCommunicat = "Brak połączenia z serwerem";
+                return new List<Test>();
             }
 
         }
@@ -85,6 +106,7 @@ namespace ZioClient.ModelData
                 return default(Test);
             }
         }
+
         public List<Test> GetByNick(string nick)
         {
             try

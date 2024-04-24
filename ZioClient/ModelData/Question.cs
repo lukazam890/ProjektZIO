@@ -16,6 +16,7 @@ namespace ZioClient.ModelData
         public string answer3 { get; set; }
         public string answer4 { get; set; }
         public string reference { get; set; }
+        public List<TestQuestion> testQuestions { get; set; }
     }
 }
 
