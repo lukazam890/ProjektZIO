@@ -18,8 +18,19 @@ namespace ProjektZiotest.BLL
             try
             {
                 return _context.Tests
-                    .Include(t => t.Questions)
-                    .FirstOrDefault(t => t.Id == id);
+                    .Where(t => t.Id == id)
+                    .Select(t => new Test
+                    {
+                        Id = t.Id,
+                        Nick = t.Nick,
+                        Date = t.Date,
+                        Result = t.Result,
+                        TestQuestions = t.TestQuestions.Select(q => new TestQuestion
+                        {
+                            QuestionId = q.QuestionId,
+                        }).ToList()
+                    })
+                    .FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -30,6 +41,7 @@ namespace ProjektZiotest.BLL
         {
             try
             {
+                test.Id = 0;
                 _context.Tests.Add(test);
                 _context.SaveChanges();
             }
@@ -82,7 +94,18 @@ namespace ProjektZiotest.BLL
             try
             {
                 return _context.Tests
-                    .Include(t => t.Questions)
+                    .Select(t => new Test
+                    {
+                        Id = t.Id,
+                        Nick = t.Nick,
+                        Date = t.Date,
+                        Result = t.Result,
+                        TestQuestions = t.TestQuestions.Select(q => new TestQuestion
+                        { //odczytujac tylko id nie doprowadzam do odwolania cyklicznego
+                            QuestionId = q.QuestionId,
+
+                        }).ToList()
+                    })
                     .ToList();
             }
             catch (Exception ex)
@@ -95,9 +118,18 @@ namespace ProjektZiotest.BLL
         {
             try
             {
-                return _context.Tests
-                    .Include(t => t.Questions) 
-                    .FirstOrDefault(t => t.Nick == nick && t.Date == date);
+                return  _context.Tests
+                    .Select(t => new Test
+                    {
+                        Id = t.Id,
+                        Nick = t.Nick,
+                        Date = t.Date,
+                        Result = t.Result,
+                        TestQuestions = t.TestQuestions.Select(q => new TestQuestion
+                        {
+                            QuestionId = q.QuestionId,
+                        }).ToList()
+                    }).FirstOrDefault(t => t.Nick == nick && t.Date == date);
             }
             catch (Exception ex)
             {
@@ -109,10 +141,18 @@ namespace ProjektZiotest.BLL
         {
             try
             {
-                return _context.Tests
-                    .Include(t => t.Questions)
-                    .Where(t => t.Nick == nick)
-                    .ToList();
+                return _context.Tests.Where(t => t.Nick == nick)
+                    .Select(t => new Test
+                    {
+                        Id = t.Id,
+                        Nick = t.Nick,
+                        Date = t.Date,
+                        Result = t.Result,
+                        TestQuestions = t.TestQuestions.Select(q => new TestQuestion
+                        {
+                            QuestionId = q.QuestionId,
+                        }).ToList()
+                    }).ToList();
             }
             catch (Exception ex)
             {
@@ -123,18 +163,21 @@ namespace ProjektZiotest.BLL
         {
             try
             {
-                var test = _context.Tests.FirstOrDefault(t => t.Id == testId);
+                var test = _context.Tests
+                    .Include(t => t.TestQuestions) 
+                    .FirstOrDefault(t => t.Id == testId);
+
                 if (test == null)
                     throw new Exception("Test not found.");
 
-                test.Questions = new List<Question>();
 
                 foreach (var questionId in questionIds)
                 {
                     var question = _context.Questions.FirstOrDefault(q => q.Id == questionId);
                     if (question != null)
                     {
-                        test.Questions.Add(question);
+
+                        test.TestQuestions.Add(new TestQuestion { TestId = testId, QuestionId = questionId });
                     }
                 }
 

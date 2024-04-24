@@ -12,8 +12,8 @@ using ProjektZiotest.Models;
 namespace ProjektZiotest.Migrations
 {
     [DbContext(typeof(QuizDB))]
-    [Migration("20240411175412_nowa334")]
-    partial class nowa334
+    [Migration("20240424155926_nowa12")]
+    partial class nowa12
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,12 +60,7 @@ namespace ProjektZiotest.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TestId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TestId");
 
                     b.ToTable("Questions");
                 });
@@ -93,16 +88,48 @@ namespace ProjektZiotest.Migrations
                     b.ToTable("Tests");
                 });
 
+            modelBuilder.Entity("ProjektZiotest.Models.TestQuestion", b =>
+                {
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TestId", "QuestionId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("TestQuestions");
+                });
+
+            modelBuilder.Entity("ProjektZiotest.Models.TestQuestion", b =>
+                {
+                    b.HasOne("ProjektZiotest.Models.Question", "Question")
+                        .WithMany("TestQuestions")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjektZiotest.Models.Test", "Test")
+                        .WithMany("TestQuestions")
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Question");
+
+                    b.Navigation("Test");
+                });
+
             modelBuilder.Entity("ProjektZiotest.Models.Question", b =>
                 {
-                    b.HasOne("ProjektZiotest.Models.Test", null)
-                        .WithMany("Questions")
-                        .HasForeignKey("TestId");
+                    b.Navigation("TestQuestions");
                 });
 
             modelBuilder.Entity("ProjektZiotest.Models.Test", b =>
                 {
-                    b.Navigation("Questions");
+                    b.Navigation("TestQuestions");
                 });
 #pragma warning restore 612, 618
         }

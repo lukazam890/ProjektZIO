@@ -1,4 +1,5 @@
-﻿using ProjektZiotest.IService;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjektZiotest.IService;
 using ProjektZiotest.Models;
 
 namespace ProjektZiotest.BLL
@@ -16,7 +17,24 @@ namespace ProjektZiotest.BLL
         {
             try
             {
-                return _context.Questions.FirstOrDefault(q => q.Id == id);
+                return _context.Questions
+                    .Where(q => q.Id == id)
+                    .Select(q => new Question
+                    {
+                        Id = q.Id,
+                        QuestionContent = q.QuestionContent,
+                        CorrectAnswer = q.CorrectAnswer,
+                        Answer1 = q.Answer1,
+                        Answer2 = q.Answer2,
+                        Answer3 = q.Answer3,
+                        Answer4 = q.Answer4,
+                        Reference = q.Reference,
+                        TestQuestions = q.TestQuestions.Select(tq => new TestQuestion
+                        {
+                            TestId = tq.TestId
+                        }).ToList()
+                    })
+                    .FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -28,6 +46,7 @@ namespace ProjektZiotest.BLL
         {
             try
             {
+                question.Id = 0;
                 _context.Questions.Add(question);
                 _context.SaveChanges();
             }
@@ -90,7 +109,22 @@ namespace ProjektZiotest.BLL
         {
             try
             {
-                return _context.Questions.ToList();
+                return _context.Questions
+                    .Select(q => new Question
+                    {
+                        Id = q.Id,
+                        QuestionContent = q.QuestionContent,
+                        CorrectAnswer = q.CorrectAnswer,
+                        Answer1 = q.Answer1,
+                        Answer2 = q.Answer2,
+                        Answer3 = q.Answer3,
+                        Answer4 = q.Answer4,
+                        Reference = q.Reference,
+                        TestQuestions = q.TestQuestions.Select(tq => new TestQuestion
+                        {
+                            TestId = tq.TestId
+                        }).ToList()
+                    }).ToList();
             }
             catch (Exception ex)
             {

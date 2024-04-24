@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjektZiotest.BLL;
 using ProjektZiotest.IService;
 using ProjektZiotest.Models;
 
@@ -27,6 +28,18 @@ namespace ProjektZiotest.Controllers
                     return NotFound();
                 }
                 return test;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpGet]
+        public ActionResult<List<Test>> GetAllTests()
+        {
+            try
+            {
+                return _testService.GetAllTests();
             }
             catch (Exception ex)
             {
