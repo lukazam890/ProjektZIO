@@ -40,7 +40,7 @@ namespace ProjektZiotest.Controllers
         {
             try
             {
-                question.Id = 0;
+                 question.Id = 0;
                 _questionService.AddQuestion(question);
                 return CreatedAtAction(nameof(GetQuestionById), new { id = question.Id }, question);
             }
