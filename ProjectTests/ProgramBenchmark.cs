@@ -14,9 +14,9 @@ namespace ProjectTests
             static void Main(string[] args)
             {
             var summary = BenchmarkRunner.Run<QuestionControllerPerformanceTests>();
-        }
+            }
 
-    }
+        }
 }
 
 

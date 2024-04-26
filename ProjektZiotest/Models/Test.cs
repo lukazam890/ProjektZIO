@@ -9,6 +9,6 @@ namespace ProjektZiotest.Models
         public string Nick { get; set; }
         public DateTime Date { get; set; }
         public int Result { get; set; }
-        public List<TestQuestion>? TestQuestions { get; set; } // Relacja wiele do wielu z Question
+        public List<TestQuestion>? TestQuestions { get; set; } 
     }
 }

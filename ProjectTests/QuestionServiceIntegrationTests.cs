@@ -24,7 +24,7 @@ namespace ProjectTests
         [Fact]
         public void AddQuestion_AddsQuestionToDatabase()
         {
-            // Arrange
+
             var options = CreateNewContextOptions();
             using (var context = new QuizDBTest(options))
             {
@@ -40,11 +40,10 @@ namespace ProjectTests
                     Reference = "https://en.wikipedia.org/wiki/Paris"
                 };
 
-                // Act
                 questionService.AddQuestion(question);
             }
 
-            // Assert
+
             using (var context = new QuizDBTest(options))
             {
                 Assert.Equal(1, context.Questions.Count());
@@ -55,7 +54,6 @@ namespace ProjectTests
         [Fact]
         public void UpdateQuestion_UpdatesQuestionInDatabase()
         {
-            // Arrange
             var options = CreateNewContextOptions();
             using (var context = new QuizDBTest(options))
             {
@@ -72,7 +70,6 @@ namespace ProjectTests
                 };
                 questionService.AddQuestion(question);
 
-                // Act
                 var updatedQuestion = new Question
                 {
                     QuestionContent = "What is the capital of Spain?",
@@ -86,7 +83,6 @@ namespace ProjectTests
                 questionService.UpdateQuestion(question.Id, updatedQuestion);
             }
 
-            // Assert
             using (var context = new QuizDBTest(options))
             {
                 Assert.Equal(1, context.Questions.Count());
@@ -98,7 +94,6 @@ namespace ProjectTests
         [Fact]
         public void DeleteQuestion_DeletesQuestionFromDatabase()
         {
-            // Arrange
             var options = CreateNewContextOptions();
             using (var context = new QuizDBTest(options))
             {
@@ -115,11 +110,9 @@ namespace ProjectTests
                 };
                 questionService.AddQuestion(question);
 
-                // Act
                 questionService.DeleteQuestion(question.Id);
             }
 
-            // Assert
             using (var context = new QuizDBTest(options))
             {
                 Assert.Equal(0, context.Questions.Count());

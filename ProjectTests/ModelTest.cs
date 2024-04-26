@@ -12,7 +12,7 @@ namespace ProjectTests
         [Fact]
         public void Test_Create_Test_Model()
         {
-            // Arrange
+
             var test = new Test
             {
                 Id = 1,
@@ -22,21 +22,19 @@ namespace ProjectTests
                 TestQuestions = new List<TestQuestion>()
             };
 
-            // Act
 
-            // Assert
             Assert.Equal(1, test.Id);
             Assert.Equal("TestUser", test.Nick);
-            Assert.Equal(DateTime.Now.Date, test.Date.Date); // Check if dates match ignoring time
+            Assert.Equal(DateTime.Now.Date, test.Date.Date);
             Assert.Equal(80, test.Result);
             Assert.NotNull(test.TestQuestions);
-            Assert.Empty(test.TestQuestions); // Check if TestQuestions list is empty initially
+            Assert.Empty(test.TestQuestions); 
         }
 
         [Fact]
         public void Test_Create_Question_Model()
         {
-            // Arrange
+
             var question = new Question
             {
                 Id = 1,
@@ -50,9 +48,6 @@ namespace ProjectTests
                 TestQuestions = new List<TestQuestion>()
             };
 
-            // Act
-
-            // Assert
             Assert.Equal(1, question.Id);
             Assert.Equal("What is the capital of France?", question.QuestionContent);
             Assert.Equal(1, question.CorrectAnswer);
@@ -62,7 +57,7 @@ namespace ProjectTests
             Assert.Equal("Madrid", question.Answer4);
             Assert.Equal("https://en.wikipedia.org/wiki/Paris", question.Reference);
             Assert.NotNull(question.TestQuestions);
-            Assert.Empty(question.TestQuestions); // Check if TestQuestions list is empty initially
+            Assert.Empty(question.TestQuestions); 
 
             var exception = Record.Exception(() =>
             {
@@ -70,7 +65,7 @@ namespace ProjectTests
                 {
                     Id = 1,
                     QuestionContent = "What is the capital of France?",
-                    CorrectAnswer = 5, // Setting an invalid correct answer
+                    CorrectAnswer = 5, 
                     Answer1 = "Paris",
                     Answer2 = "London",
                     Answer3 = "Berlin",
@@ -80,7 +75,6 @@ namespace ProjectTests
                 };
             });
 
-            // Assert
             Assert.NotNull(exception);
             Assert.IsType<ArgumentOutOfRangeException>(exception);
             Assert.NotNull(exception);
@@ -91,7 +85,7 @@ namespace ProjectTests
         [Fact]
         public void Test_Create_TestQuestion_Model()
         {
-            // Arrange
+
             var testQuestion = new TestQuestion
             {
                 TestId = 1,
@@ -100,9 +94,7 @@ namespace ProjectTests
                 Question = new Question()
             };
 
-            // Act
 
-            // Assert
             Assert.Equal(1, testQuestion.TestId);
             Assert.NotNull(testQuestion.Test);
             Assert.Equal(1, testQuestion.QuestionId);

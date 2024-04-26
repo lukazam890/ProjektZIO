@@ -27,7 +27,6 @@ namespace ProjectTests
         [Fact]
         public void Test_AddQuestion()
         {
-            // Arrange
             using (var context = new QuizDBTest(CreateNewContextOptions()))
             {
                 IQuestionService questionService = new QuestionServiceTest(context);
@@ -43,10 +42,8 @@ namespace ProjectTests
                     Reference = "https://en.wikipedia.org/wiki/Paris"
                 };
 
-                // Act
                 questionService.AddQuestion(question);
 
-                // Assert
                 var result = context.Questions.Find(1);
                 Assert.NotNull(result);
                 Assert.Equal("What is the capital of France?", result.QuestionContent);
@@ -56,10 +53,8 @@ namespace ProjectTests
         [Fact]
         public void Test_UpdateQuestion()
         {
-            // Arrange
             using (var context = new QuizDBTest(CreateNewContextOptions()))
             {
-                // Add a question
                 var question = new Question
                 {
                     Id = 1,
@@ -74,7 +69,6 @@ namespace ProjectTests
                 context.Questions.Add(question);
                 context.SaveChanges();
 
-                // Update the question
                 IQuestionService questionService = new QuestionServiceTest(context);
                 var updatedQuestion = new Question
                 {
@@ -88,10 +82,8 @@ namespace ProjectTests
                     Reference = "https://en.wikipedia.org/wiki/Madrid"
                 };
 
-                // Act
                 questionService.UpdateQuestion(1, updatedQuestion);
 
-                // Assert
                 var result = context.Questions.Find(1);
                 Assert.NotNull(result);
                 Assert.Equal("What is the capital of Spain?", result.QuestionContent);
@@ -102,10 +94,10 @@ namespace ProjectTests
         [Fact]
         public void Test_DeleteQuestion()
         {
-            // Arrange
+
             using (var context = new QuizDBTest(CreateNewContextOptions()))
             {
-                // Add a question
+
                 var question = new Question
                 {
                     Id = 1,
@@ -120,11 +112,10 @@ namespace ProjectTests
                 context.Questions.Add(question);
                 context.SaveChanges();
 
-                // Act
+
                 IQuestionService questionService = new QuestionServiceTest(context);
                 questionService.DeleteQuestion(1);
 
-                // Assert
                 var result = context.Questions.Find(1);
                 Assert.Null(result);
             }
@@ -133,10 +124,10 @@ namespace ProjectTests
         [Fact]
         public void Test_GetAllQuestions()
         {
-            // Arrange
+
             using (var context = new QuizDBTest(CreateNewContextOptions()))
             {
-                // Add some questions
+
                 context.Questions.Add(new Question
                 {
                     Id = 1,
@@ -161,11 +152,10 @@ namespace ProjectTests
                 });
                 context.SaveChanges();
 
-                // Act
+
                 IQuestionService questionService = new QuestionServiceTest(context);
                 var allQuestions = questionService.GetAllQuestions();
 
-                // Assert
                 Assert.Equal(2, allQuestions.Count);
                 Assert.Contains(allQuestions, q => q.Id == 1);
                 Assert.Contains(allQuestions, q => q.Id == 2);

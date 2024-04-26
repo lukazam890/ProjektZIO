@@ -52,7 +52,5 @@ namespace ProjectTests
             Assert.NotNull(question);
             Assert.Equal("What is the capital of France?", question.QuestionContent);
         }
-
-        // Dodaj scenariusze dla UpdateQuestion i DeleteQuestion
     }
 }

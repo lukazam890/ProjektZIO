@@ -59,7 +59,6 @@ namespace ProjektZiotest.BLL
                 if (test == null)
                     throw new Exception("Test not found.");
 
-                // Update test properties if needed
                 test.Nick = updatedTest.Nick;
                 test.Date = updatedTest.Date;
                 test.Result = updatedTest.Result;
