@@ -98,6 +98,35 @@ namespace ZioClient.ModelData
         }
         */
 
+        public void AddQuestion(Question modelData)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            request.Headers.Add("access-control-allow-origin", "*");
+            var content = new StringContent(JsonSerializer.Serialize(modelData), null, "application/json");
+            responseCommunicat = JsonSerializer.Serialize(modelData).ToString();
+            request.Content = content;
+
+
+            try
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.Content.ReadAsStringAsync().Result == "0")
+                {
+                    responseCommunicat = "Poprawnie dodano rekord";
+                }
+
+                else
+                {
+                   responseCommunicat = "Operacja dodania rekordu się nie powiodła";
+                }
+            }
+            catch (Exception)
+            {
+                 responseCommunicat = "Brak połączenia z webApi";
+            }
+
+        }
+
         public Question GetById(int id)
         {
             try

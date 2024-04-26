@@ -22,6 +22,8 @@ namespace ZioClient
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+     
             List<int> lista = new List<int> { 2, 3 }; 
             httpRequestT.PutQuestion(2,lista);  //test dodania pytań
             Test t = httpRequestT.GetById(1);
@@ -50,14 +52,6 @@ namespace ZioClient
 
             List<Question> list = httpRequestQ.GetAll();
             Console.WriteLine(list.Count.ToString());
-
-
-
-
-
-
-
-
 
         }
     }

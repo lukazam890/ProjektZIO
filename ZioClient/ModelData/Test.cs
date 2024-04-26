@@ -12,6 +12,6 @@ namespace ZioClient.ModelData
         public string nick { get; set; }
         public DateTime date { get; set; }
         public int result { get; set; }
-        public List<TestQuestion> testQuestions { get; set; } = null;
+        public List<TestQuestion> testQuestions { get; set; } = new List<TestQuestion>();
     }
 }
