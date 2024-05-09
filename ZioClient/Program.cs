@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZioClient.Model;
 
 namespace ZioClient
 {
     internal static class Program
     {
+        private static void initioalization()
+        {
+            Settings.AreQuestionsReady = false;
+        }
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
@@ -16,7 +21,7 @@ namespace ZioClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainWindow());
         }
     }
 }
