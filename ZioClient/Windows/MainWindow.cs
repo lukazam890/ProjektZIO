@@ -40,7 +40,7 @@ namespace ZioClient
             List<int> lista = new List<int> { 2, 3 }; 
             httpRequestT.PutQuestion(2,lista);  //test dodania pytań
             Test t = httpRequestT.GetById(1);
-            textBox1.Text = t.testQuestions.Count.ToString();  //test get by id
+            textbox_nick.Text = t.testQuestions.Count.ToString();  //test get by id
             Console.WriteLine(t.testQuestions.Count.ToString());
 
             List<Test> listb = httpRequestT.GetAll();

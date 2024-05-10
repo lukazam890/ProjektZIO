@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textbox_nick = new System.Windows.Forms.TextBox();
             this.bnt_gettingQuestions = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox_gettingQuestions = new System.Windows.Forms.GroupBox();
             this.numericUpDown_numberOfQuestions = new System.Windows.Forms.NumericUpDown();
             this.groupBox_question = new System.Windows.Forms.GroupBox();
+            this.button_reset = new System.Windows.Forms.Button();
+            this.label_questionNumber = new System.Windows.Forms.Label();
             this.bnt_previousQuestion = new System.Windows.Forms.Button();
             this.bnt_nextQuestion = new System.Windows.Forms.Button();
             this.radioButton_answer4 = new System.Windows.Forms.RadioButton();
@@ -43,8 +45,6 @@
             this.radioButton_answer1 = new System.Windows.Forms.RadioButton();
             this.pictureBox_pictureOfQuestion = new System.Windows.Forms.PictureBox();
             this.label_questionContent = new System.Windows.Forms.Label();
-            this.label_questionNumber = new System.Windows.Forms.Label();
-            this.button_reset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox_gettingQuestions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numberOfQuestions)).BeginInit();
@@ -62,12 +62,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textbox_nick
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(162, 20);
-            this.textBox1.TabIndex = 1;
+            this.textbox_nick.Location = new System.Drawing.Point(15, 57);
+            this.textbox_nick.Name = "textbox_nick";
+            this.textbox_nick.Size = new System.Drawing.Size(162, 20);
+            this.textbox_nick.TabIndex = 1;
             // 
             // bnt_gettingQuestions
             // 
@@ -81,7 +81,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textbox_nick);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(192, 367);
             this.groupBox1.Name = "groupBox1";
@@ -136,6 +136,25 @@
             this.groupBox_question.TabIndex = 5;
             this.groupBox_question.TabStop = false;
             this.groupBox_question.Text = "Pytanie";
+            // 
+            // button_reset
+            // 
+            this.button_reset.Location = new System.Drawing.Point(276, 256);
+            this.button_reset.Name = "button_reset";
+            this.button_reset.Size = new System.Drawing.Size(75, 23);
+            this.button_reset.TabIndex = 6;
+            this.button_reset.Text = "Reset";
+            this.button_reset.UseVisualStyleBackColor = true;
+            this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
+            // 
+            // label_questionNumber
+            // 
+            this.label_questionNumber.AutoSize = true;
+            this.label_questionNumber.Location = new System.Drawing.Point(84, 261);
+            this.label_questionNumber.Name = "label_questionNumber";
+            this.label_questionNumber.Size = new System.Drawing.Size(35, 13);
+            this.label_questionNumber.TabIndex = 9;
+            this.label_questionNumber.Text = "label1";
             // 
             // bnt_previousQuestion
             // 
@@ -214,25 +233,6 @@
             this.label_questionContent.TabIndex = 0;
             this.label_questionContent.Text = "Treść pytania";
             // 
-            // label_questionNumber
-            // 
-            this.label_questionNumber.AutoSize = true;
-            this.label_questionNumber.Location = new System.Drawing.Point(84, 261);
-            this.label_questionNumber.Name = "label_questionNumber";
-            this.label_questionNumber.Size = new System.Drawing.Size(35, 13);
-            this.label_questionNumber.TabIndex = 9;
-            this.label_questionNumber.Text = "label1";
-            // 
-            // button_reset
-            // 
-            this.button_reset.Location = new System.Drawing.Point(276, 256);
-            this.button_reset.Name = "button_reset";
-            this.button_reset.Size = new System.Drawing.Size(75, 23);
-            this.button_reset.TabIndex = 6;
-            this.button_reset.Text = "Reset";
-            this.button_reset.UseVisualStyleBackColor = true;
-            this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,7 +257,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textbox_nick;
         private System.Windows.Forms.Button bnt_gettingQuestions;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox_gettingQuestions;

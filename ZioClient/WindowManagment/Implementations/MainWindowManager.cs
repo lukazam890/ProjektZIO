@@ -14,6 +14,8 @@ namespace ZioClient.WindowManagment
     public class MainWindowManager: IMainWindowManager
     {
         private HttpClientQuestion HttpClientQuestion = new HttpClientQuestion();
+        private HttpClientTest HttpClientTest = new HttpClientTest();
+        List<QuestionProcess> Questions;
         public List<QuestionProcess> getQuestions(int numberOfQuestions)
         {
             Random random = new Random();
@@ -28,20 +30,20 @@ namespace ZioClient.WindowManagment
                 do
                 {
                     number = random.Next(min, max);
-                    if (allQuestions.Find(x => x.id == number) != null)
+                    if (allQuestions.Find(x => x.id == number) != null && randomNumbers.Find(x=>x == number) == 0)
                         isNotGoodNumber = false;
                 } while (isNotGoodNumber);
                 randomNumbers.Add(number);
             }
-            List<QuestionProcess> result = new List<QuestionProcess>();
+            Questions = new List<QuestionProcess>();
             foreach (int number in randomNumbers) 
             {
                 QuestionProcess questionProcess = new QuestionProcess();
                 questionProcess.Question = allQuestions.First(x => x.id == number);
                 questionProcess.AnswerNumber = 0;
-                result.Add(questionProcess);
+                Questions.Add(questionProcess);
             }
-            return result;
+            return Questions;
         }
         public string testResult(List<QuestionProcess> questionProcesses)
         {
@@ -49,6 +51,12 @@ namespace ZioClient.WindowManagment
             foreach (QuestionProcess questionProcess in questionProcesses)
                 if (questionProcess.AnswerNumber == questionProcess.Question.correctAnswer)
                     score++;
+            Test test = new Test { nick="Test", date=DateTime.Now };
+            HttpClientTest.AddTest(test);
+            int idTest = HttpClientTest.GetAll().Max(x => x.id);
+            List<int> QuestionsId = new List<int>();
+            Questions.ForEach( q => QuestionsId.Add(q.Question.id));
+            HttpClientTest.PutQuestion(idTest, QuestionsId);
             double scorePercent = ((double)((double)score / (double)questionProcesses.Count)) * 100;
             string result = $"Wynik: {score}/{questionProcesses.Count}, co stanowi: {scorePercent}%";
             return result ;
