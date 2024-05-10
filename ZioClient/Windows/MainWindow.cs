@@ -33,7 +33,7 @@ namespace ZioClient
             switchControls();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         {
 
      
@@ -66,7 +66,7 @@ namespace ZioClient
             List<Question> list = httpRequestQ.GetAll();
             Console.WriteLine(list.Count.ToString());
 
-        }
+        }*/
 
         private void bnt_gettingQuestions_Click(object sender, EventArgs e)
         {
@@ -185,7 +185,11 @@ namespace ZioClient
 
         private void switchControls()
         {
-            if(radioButton_answer1.Enabled == false)
+            radioButton_answer1.Checked = false;
+            radioButton_answer2.Checked = false;
+            radioButton_answer3.Checked = false;
+            radioButton_answer4.Checked = false;
+            if (radioButton_answer1.Enabled == false)
             {
                 radioButton_answer1.Enabled = true;
                 radioButton_answer2.Enabled = true;

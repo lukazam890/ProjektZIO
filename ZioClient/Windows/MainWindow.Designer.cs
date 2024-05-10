@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textbox_nick = new System.Windows.Forms.TextBox();
             this.bnt_gettingQuestions = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox_gettingQuestions = new System.Windows.Forms.GroupBox();
             this.numericUpDown_numberOfQuestions = new System.Windows.Forms.NumericUpDown();
             this.groupBox_question = new System.Windows.Forms.GroupBox();
@@ -45,29 +42,12 @@
             this.radioButton_answer1 = new System.Windows.Forms.RadioButton();
             this.pictureBox_pictureOfQuestion = new System.Windows.Forms.PictureBox();
             this.label_questionContent = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.label_questionNumberLabel = new System.Windows.Forms.Label();
             this.groupBox_gettingQuestions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numberOfQuestions)).BeginInit();
             this.groupBox_question.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_pictureOfQuestion)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textbox_nick
-            // 
-            this.textbox_nick.Location = new System.Drawing.Point(15, 57);
-            this.textbox_nick.Name = "textbox_nick";
-            this.textbox_nick.Size = new System.Drawing.Size(162, 20);
-            this.textbox_nick.TabIndex = 1;
             // 
             // bnt_gettingQuestions
             // 
@@ -79,24 +59,15 @@
             this.bnt_gettingQuestions.UseVisualStyleBackColor = true;
             this.bnt_gettingQuestions.Click += new System.EventHandler(this.bnt_gettingQuestions_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textbox_nick);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(192, 367);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 102);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "test";
-            // 
             // groupBox_gettingQuestions
             // 
+            this.groupBox_gettingQuestions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_gettingQuestions.Controls.Add(this.numericUpDown_numberOfQuestions);
             this.groupBox_gettingQuestions.Controls.Add(this.bnt_gettingQuestions);
             this.groupBox_gettingQuestions.Location = new System.Drawing.Point(12, 12);
             this.groupBox_gettingQuestions.Name = "groupBox_gettingQuestions";
-            this.groupBox_gettingQuestions.Size = new System.Drawing.Size(223, 52);
+            this.groupBox_gettingQuestions.Size = new System.Drawing.Size(776, 52);
             this.groupBox_gettingQuestions.TabIndex = 4;
             this.groupBox_gettingQuestions.TabStop = false;
             this.groupBox_gettingQuestions.Text = "Losowanie";
@@ -120,6 +91,10 @@
             // 
             // groupBox_question
             // 
+            this.groupBox_question.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_question.Controls.Add(this.label_questionNumberLabel);
             this.groupBox_question.Controls.Add(this.button_reset);
             this.groupBox_question.Controls.Add(this.label_questionNumber);
             this.groupBox_question.Controls.Add(this.bnt_previousQuestion);
@@ -132,33 +107,36 @@
             this.groupBox_question.Controls.Add(this.label_questionContent);
             this.groupBox_question.Location = new System.Drawing.Point(12, 70);
             this.groupBox_question.Name = "groupBox_question";
-            this.groupBox_question.Size = new System.Drawing.Size(639, 291);
+            this.groupBox_question.Size = new System.Drawing.Size(776, 368);
             this.groupBox_question.TabIndex = 5;
             this.groupBox_question.TabStop = false;
             this.groupBox_question.Text = "Pytanie";
             // 
             // button_reset
             // 
-            this.button_reset.Location = new System.Drawing.Point(276, 256);
+            this.button_reset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_reset.Location = new System.Drawing.Point(168, 339);
             this.button_reset.Name = "button_reset";
             this.button_reset.Size = new System.Drawing.Size(75, 23);
-            this.button_reset.TabIndex = 6;
+            this.button_reset.TabIndex = 9;
             this.button_reset.Text = "Reset";
             this.button_reset.UseVisualStyleBackColor = true;
             this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 
             // label_questionNumber
             // 
+            this.label_questionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label_questionNumber.AutoSize = true;
-            this.label_questionNumber.Location = new System.Drawing.Point(84, 261);
+            this.label_questionNumber.Location = new System.Drawing.Point(300, 344);
             this.label_questionNumber.Name = "label_questionNumber";
-            this.label_questionNumber.Size = new System.Drawing.Size(35, 13);
+            this.label_questionNumber.Size = new System.Drawing.Size(26, 13);
             this.label_questionNumber.TabIndex = 9;
-            this.label_questionNumber.Text = "label1";
+            this.label_questionNumber.Text = "X/Y";
             // 
             // bnt_previousQuestion
             // 
-            this.bnt_previousQuestion.Location = new System.Drawing.Point(0, 256);
+            this.bnt_previousQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bnt_previousQuestion.Location = new System.Drawing.Point(6, 339);
             this.bnt_previousQuestion.Name = "bnt_previousQuestion";
             this.bnt_previousQuestion.Size = new System.Drawing.Size(75, 23);
             this.bnt_previousQuestion.TabIndex = 7;
@@ -168,7 +146,8 @@
             // 
             // bnt_nextQuestion
             // 
-            this.bnt_nextQuestion.Location = new System.Drawing.Point(195, 256);
+            this.bnt_nextQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bnt_nextQuestion.Location = new System.Drawing.Point(87, 339);
             this.bnt_nextQuestion.Name = "bnt_nextQuestion";
             this.bnt_nextQuestion.Size = new System.Drawing.Size(75, 23);
             this.bnt_nextQuestion.TabIndex = 8;
@@ -178,49 +157,51 @@
             // 
             // radioButton_answer4
             // 
-            this.radioButton_answer4.Location = new System.Drawing.Point(6, 200);
+            this.radioButton_answer4.Location = new System.Drawing.Point(6, 260);
             this.radioButton_answer4.Name = "radioButton_answer4";
-            this.radioButton_answer4.Size = new System.Drawing.Size(453, 50);
+            this.radioButton_answer4.Size = new System.Drawing.Size(540, 70);
             this.radioButton_answer4.TabIndex = 6;
             this.radioButton_answer4.TabStop = true;
-            this.radioButton_answer4.Text = "radioButton4";
+            this.radioButton_answer4.Text = "Pytanie4";
             this.radioButton_answer4.UseVisualStyleBackColor = true;
             // 
             // radioButton_answer3
             // 
-            this.radioButton_answer3.Location = new System.Drawing.Point(6, 144);
+            this.radioButton_answer3.Location = new System.Drawing.Point(6, 184);
             this.radioButton_answer3.Name = "radioButton_answer3";
-            this.radioButton_answer3.Size = new System.Drawing.Size(453, 50);
+            this.radioButton_answer3.Size = new System.Drawing.Size(540, 70);
             this.radioButton_answer3.TabIndex = 5;
             this.radioButton_answer3.TabStop = true;
-            this.radioButton_answer3.Text = "radioButton3";
+            this.radioButton_answer3.Text = "Pytanie3";
             this.radioButton_answer3.UseVisualStyleBackColor = true;
             // 
             // radioButton_answer2
             // 
-            this.radioButton_answer2.Location = new System.Drawing.Point(6, 88);
+            this.radioButton_answer2.Location = new System.Drawing.Point(6, 108);
             this.radioButton_answer2.Name = "radioButton_answer2";
-            this.radioButton_answer2.Size = new System.Drawing.Size(453, 50);
+            this.radioButton_answer2.Size = new System.Drawing.Size(540, 70);
             this.radioButton_answer2.TabIndex = 4;
             this.radioButton_answer2.TabStop = true;
-            this.radioButton_answer2.Text = "radioButton2";
+            this.radioButton_answer2.Text = "Pytanie2";
             this.radioButton_answer2.UseVisualStyleBackColor = true;
             // 
             // radioButton_answer1
             // 
             this.radioButton_answer1.Location = new System.Drawing.Point(6, 32);
             this.radioButton_answer1.Name = "radioButton_answer1";
-            this.radioButton_answer1.Size = new System.Drawing.Size(453, 50);
+            this.radioButton_answer1.Size = new System.Drawing.Size(540, 70);
             this.radioButton_answer1.TabIndex = 3;
             this.radioButton_answer1.TabStop = true;
-            this.radioButton_answer1.Text = "radioButton1";
+            this.radioButton_answer1.Text = "Pytanie1";
             this.radioButton_answer1.UseVisualStyleBackColor = true;
             // 
             // pictureBox_pictureOfQuestion
             // 
-            this.pictureBox_pictureOfQuestion.Location = new System.Drawing.Point(465, 16);
+            this.pictureBox_pictureOfQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_pictureOfQuestion.Location = new System.Drawing.Point(552, 16);
             this.pictureBox_pictureOfQuestion.Name = "pictureBox_pictureOfQuestion";
-            this.pictureBox_pictureOfQuestion.Size = new System.Drawing.Size(168, 269);
+            this.pictureBox_pictureOfQuestion.Size = new System.Drawing.Size(218, 314);
             this.pictureBox_pictureOfQuestion.TabIndex = 1;
             this.pictureBox_pictureOfQuestion.TabStop = false;
             // 
@@ -233,6 +214,16 @@
             this.label_questionContent.TabIndex = 0;
             this.label_questionContent.Text = "Treść pytania";
             // 
+            // label_questionNumberLabel
+            // 
+            this.label_questionNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_questionNumberLabel.AutoSize = true;
+            this.label_questionNumberLabel.Location = new System.Drawing.Point(249, 344);
+            this.label_questionNumberLabel.Name = "label_questionNumberLabel";
+            this.label_questionNumberLabel.Size = new System.Drawing.Size(45, 13);
+            this.label_questionNumberLabel.TabIndex = 10;
+            this.label_questionNumberLabel.Text = "Pytanie:";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,11 +231,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox_question);
             this.Controls.Add(this.groupBox_gettingQuestions);
-            this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "MainWindow";
             this.Text = "Wskazania Sygnalizatorów Kolejowych";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox_gettingQuestions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numberOfQuestions)).EndInit();
             this.groupBox_question.ResumeLayout(false);
@@ -255,11 +244,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textbox_nick;
         private System.Windows.Forms.Button bnt_gettingQuestions;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox_gettingQuestions;
         private System.Windows.Forms.NumericUpDown numericUpDown_numberOfQuestions;
         private System.Windows.Forms.GroupBox groupBox_question;
@@ -273,6 +258,7 @@
         private System.Windows.Forms.Button bnt_nextQuestion;
         private System.Windows.Forms.Label label_questionNumber;
         private System.Windows.Forms.Button button_reset;
+        private System.Windows.Forms.Label label_questionNumberLabel;
     }
 }
 
