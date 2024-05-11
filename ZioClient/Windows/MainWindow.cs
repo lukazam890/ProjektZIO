@@ -18,8 +18,8 @@ namespace ZioClient
 {
     public partial class MainWindow : Form
     {
-        private static readonly HttpClientQuestion httpRequestQ = new HttpClientQuestion();
-        private static readonly HttpClientTest httpRequestT = new HttpClientTest();
+        private static readonly HttpClientQuestion httpRequestQ = new HttpClientQuestion(new System.Net.Http.HttpClient());
+        private static readonly HttpClientTest httpRequestT = new HttpClientTest(new System.Net.Http.HttpClient());
         private static readonly IMainWindowManager mainWindowManager = new MainWindowManager();
         private static int questionIndex;
         private static int numberOfQuestions;

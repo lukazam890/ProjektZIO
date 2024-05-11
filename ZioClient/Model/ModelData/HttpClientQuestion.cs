@@ -11,11 +11,16 @@ namespace ZioClient.ModelData
 {
     public class HttpClientQuestion
     {
-        private static readonly HttpClient client = new HttpClient();
+        private HttpClient client = new HttpClient();
+
+        public HttpClientQuestion(HttpClient client) 
+        {
+            this.client = client;
+        }
 
         public string responseCommunicat { get; set; } = " ";
 
-        private string url = "http://localhost:5216/api/Question";
+        private string url = "http://projektzioipp-001-site1.etempurl.com/api/Question";
 
         //metody nie będą używane po stronie klienta
 

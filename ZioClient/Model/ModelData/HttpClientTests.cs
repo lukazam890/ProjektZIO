@@ -9,11 +9,16 @@ namespace ZioClient.ModelData
 {
     public class HttpClientTest
     {
-        private static readonly System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+        private HttpClient client = new HttpClient();
+
+        public HttpClientTest(HttpClient client) 
+        { 
+            this.client = client;
+        }
 
         public string responseCommunicat { get; set; } = " ";
 
-        private string url = "http://localhost:5216/api/Test";
+        private string url = "http://projektzioipp-001-site1.etempurl.com/api/Test";
 
         public void AddTest(Test modelData)
         {

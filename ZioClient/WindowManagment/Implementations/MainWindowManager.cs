@@ -13,8 +13,8 @@ namespace ZioClient.WindowManagment
 {
     public class MainWindowManager: IMainWindowManager
     {
-        private HttpClientQuestion HttpClientQuestion = new HttpClientQuestion();
-        private HttpClientTest HttpClientTest = new HttpClientTest();
+        private HttpClientQuestion HttpClientQuestion = new HttpClientQuestion(new System.Net.Http.HttpClient());
+        private HttpClientTest HttpClientTest = new HttpClientTest(new System.Net.Http.HttpClient());
         List<QuestionProcess> Questions;
         public List<QuestionProcess> getQuestions(int numberOfQuestions)
         {

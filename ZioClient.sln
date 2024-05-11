@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZioClient", "ZioClient\ZioClient.csproj", "{EB4B618A-D7DA-48DE-B09B-4E90D37EFFCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTests", "ClientTests\ClientTests.csproj", "{A3967AB8-2D26-47ED-AB3C-D1DE81E264A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EB4B618A-D7DA-48DE-B09B-4E90D37EFFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB4B618A-D7DA-48DE-B09B-4E90D37EFFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB4B618A-D7DA-48DE-B09B-4E90D37EFFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3967AB8-2D26-47ED-AB3C-D1DE81E264A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3967AB8-2D26-47ED-AB3C-D1DE81E264A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3967AB8-2D26-47ED-AB3C-D1DE81E264A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3967AB8-2D26-47ED-AB3C-D1DE81E264A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
