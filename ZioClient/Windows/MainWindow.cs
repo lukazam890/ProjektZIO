@@ -42,9 +42,8 @@ namespace ZioClient
         private void setBackground(Object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
-
             Rectangle rectangle = new Rectangle(0, 0, Width, Height);
-            Brush brush = new LinearGradientBrush(rectangle, Color.FromArgb(100,0,100,0), Color.FromArgb(100,0,0,255), 65f);         
+            Brush brush = new LinearGradientBrush(rectangle, Color.FromArgb(100,0,100,0), Color.FromArgb(100,0,0,255), 65f);        
             graphics.FillRectangle(brush, rectangle);
         }
 

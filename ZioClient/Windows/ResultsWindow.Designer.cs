@@ -47,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(516, 450);
             this.Controls.Add(this.dataGridView_results);
             this.Name = "ResultsWindow";
-            this.Text = "ResultsWindow";
+            this.Text = "Wyniki";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_results)).EndInit();
             this.ResumeLayout(false);
 

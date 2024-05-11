@@ -270,7 +270,7 @@
             this.ClientSize = new System.Drawing.Size(800, 470);
             this.Controls.Add(this.groupBox_question);
             this.Controls.Add(this.groupBox_gettingQuestions);
-            this.MinimumSize = new System.Drawing.Size(816, 489);
+            this.MinimumSize = new System.Drawing.Size(816, 509);
             this.Name = "MainWindow";
             this.Text = "Wskazania Sygnalizatorów Kolejowych";
             this.groupBox_gettingQuestions.ResumeLayout(false);
