@@ -12,5 +12,6 @@ namespace ZioClient.WindowManagment.Interfaces
     {
         List<QuestionProcess> getQuestions(int numberOfQuestions);
         string testResult(List<QuestionProcess> questionProcesses);
+        List<Test> getPreviousResultByNick(string nick);
     }
 }

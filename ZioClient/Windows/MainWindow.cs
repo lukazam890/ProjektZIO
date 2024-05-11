@@ -70,12 +70,21 @@ namespace ZioClient
 
         private void bnt_gettingQuestions_Click(object sender, EventArgs e)
         {
-            questionIndex = 0;
-            numberOfQuestions = Convert.ToInt32(numericUpDown_numberOfQuestions.Value);
-            Settings.QuestionsProcess = mainWindowManager.getQuestions(numberOfQuestions);
-            Settings.AreQuestionsReady = true;
-            setQuestion(0);
-            switchControls();
+            if(textBox_nick.Text != null && textBox_nick.Text != "")
+            {
+                questionIndex = 0;
+                numberOfQuestions = Convert.ToInt32(numericUpDown_numberOfQuestions.Value);
+                Settings.QuestionsProcess = mainWindowManager.getQuestions(numberOfQuestions);
+                Settings.AreQuestionsReady = true;
+                Settings.Nick = textBox_nick.Text;
+                setQuestion(0);
+                switchControls();
+                dataGridView_results.DataSource = mainWindowManager.getPreviousResultByNick(Settings.Nick);
+            }
+            else
+            {
+                MessageBox.Show("Pole z nazwą użytkownika musi być wypełnione", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void setQuestion(int index)
         {
@@ -143,7 +152,6 @@ namespace ZioClient
                 {
                     MessageBox.Show(mainWindowManager.testResult(Settings.QuestionsProcess), "Wynik");
                 }
-
                 reset();
             }
         }
@@ -174,6 +182,7 @@ namespace ZioClient
         {
             Settings.QuestionsProcess = null;
             Settings.AreQuestionsReady = false;
+            Settings.Nick = null;
             radioButton_answer1.Text = "";
             radioButton_answer2.Text = "";
             radioButton_answer3.Text = "";
@@ -200,6 +209,7 @@ namespace ZioClient
                 button_reset.Enabled = true;
                 bnt_gettingQuestions.Enabled = false;
                 numericUpDown_numberOfQuestions.Enabled = false;
+                textBox_nick.Enabled = false;
             }
             else
             {
@@ -212,6 +222,7 @@ namespace ZioClient
                 button_reset.Enabled = false;
                 bnt_gettingQuestions.Enabled = true;
                 numericUpDown_numberOfQuestions.Enabled = true;
+                textBox_nick.Enabled = true;
             }
         }
 

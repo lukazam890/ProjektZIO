@@ -11,5 +11,6 @@ namespace ZioClient.Model
     {
         public static bool AreQuestionsReady { get; set; }
         public static List<QuestionProcess> QuestionsProcess { get; set; }
+        public static string Nick { get; set; }
     }
 }

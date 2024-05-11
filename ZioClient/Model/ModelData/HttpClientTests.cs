@@ -20,36 +20,40 @@ namespace ZioClient.ModelData
 
         private string url = "http://projektzioipp-001-site1.etempurl.com/api/Test";
 
-        public void AddTest(Test modelData)
+        public void addTestQuestion(TestQuestion testQuestion)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, url);
-            request.Headers.Add("access-control-allow-origin", "*");
-            var content = new StringContent(JsonSerializer.Serialize(modelData), null, "application/json");
-
+            var content = new StringContent(JsonSerializer.Serialize(testQuestion), null, "application/json");
             request.Content = content;
-
+            
+        }
+        public void addTest(Test test)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            //request.Headers.Add("access-control-allow-origin", "*");
+            var content = new StringContent(JsonSerializer.Serialize(test), Encoding.UTF8, "application/json");
+            request.Content = content;
             try
             {
                 var response = client.SendAsync(request).Result;
-                if (response.Content.ReadAsStringAsync().Result == "0")
+                if (response.IsSuccessStatusCode)
                 {
-                    responseCommunicat = "Poprawnie dodano rekord";
+                    responseCommunicat = "Poprawnie dodano pytania do testu.";
                 }
-
                 else
                 {
-                    responseCommunicat = "Operacja dodania rekordu się nie powiodła";
+                    responseCommunicat = "Operacja dodania pytań do testu się nie powiodła.";
                 }
             }
             catch (Exception)
             {
-                responseCommunicat = "Brak połączenia z webApi";
+                responseCommunicat = "Brak połączenia z webApi.";
             }
-
         }
         public void PutQuestion(int id, List<int> questionIds)
         {
             var request = new HttpRequestMessage(HttpMethod.Put, $"{url}/{id}/add-questions");
+            request.Headers.Add("access-control-allow-origin", "*");
             var content = new StringContent(JsonSerializer.Serialize(questionIds), Encoding.UTF8, "application/json");
             request.Content = content;
 
