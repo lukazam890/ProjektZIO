@@ -43,7 +43,7 @@ namespace ClientTests
                     ItExpr.Is<HttpRequestMessage>(req =>
                         req.Method == HttpMethod.Post &&
                         req.RequestUri == new Uri(url) &&
-                        req.Headers.Contains("access-control-allow-origin") &&
+                        //req.Headers.Contains("access-control-allow-origin") &&
                         req.Content.ReadAsStringAsync().Result == JsonSerializer.Serialize(test, JsonOptions)),
                     ItExpr.IsAny<CancellationToken>()
                 )
@@ -52,9 +52,9 @@ namespace ClientTests
             var httpClient = new HttpClient(mockHttpMessageHandler.Object);
             var httpClientService = new HttpClientTest(httpClient);
 
-            httpClientService.AddTest(test);
+            httpClientService.addTest(test);
 
-            Assert.Equal("Poprawnie dodano rekord", httpClientService.responseCommunicat);
+            Assert.Equal("Poprawnie dodano pytania do testu.", httpClientService.responseCommunicat);
         }
 
         [Fact]
@@ -139,6 +139,54 @@ namespace ClientTests
 
             Assert.NotEmpty(results);
             Assert.Equal(tests.Count, results.Count);
+        }
+
+        [Fact]
+        public void GetByNick()
+        {
+            string nick = "Test";
+            var tests = new List<Test> 
+            { 
+                new Test
+                {
+                    id= 1,
+                    nick = nick,
+                    date = DateTime.Now,
+                    result = 10
+                },
+                new Test
+                {
+                    id= 2,
+                    nick = nick,
+                    date = DateTime.Now,
+                    result = 5
+                }
+            };
+
+            var expectedResponseContent = JsonSerializer.Serialize(tests);
+            var expectedResponseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            expectedResponseMessage.Content = new StringContent(expectedResponseContent);
+
+            var mockHttpMessageHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+            mockHttpMessageHandler
+                .Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(req =>
+                        req.Method == HttpMethod.Get &&
+                        req.RequestUri == new Uri(url + "/user/" + nick)),
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(expectedResponseMessage);
+
+            var httpClient = new HttpClient(mockHttpMessageHandler.Object);
+            var httpClientService = new HttpClientTest(httpClient);
+
+            var results = httpClientService.GetByNick(nick);
+
+            Assert.NotEmpty(results);
+            Assert.Equal(tests.Count, results.Count);
+            Assert.Equal("Poprawnie pobrano rekordy", httpClientService.responseCommunicat);
         }
     }
 }

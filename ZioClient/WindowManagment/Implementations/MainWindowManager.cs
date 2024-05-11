@@ -48,6 +48,7 @@ namespace ZioClient.WindowManagment
         }
         public string testResult(List<QuestionProcess> questionProcesses)
         {
+            /*
             int score = 0;
             List<Question> questionList = new List<Question>();
             List<TestQuestion> testQuestions = new List<TestQuestion>();
@@ -74,6 +75,21 @@ namespace ZioClient.WindowManagment
             double scorePercent = ((double)((double)score / (double)questionProcesses.Count)) * 100;
             string result = $"Wynik: {score}/{questionProcesses.Count}, co stanowi: {scorePercent}%";
             return result ;
+            */
+
+            int score = 0;
+            foreach (QuestionProcess questionProcess in questionProcesses)
+                if (questionProcess.AnswerNumber == questionProcess.Question.correctAnswer)
+                    score++;
+            Test test = new Test { nick = Settings.Nick, date = DateTime.Now, result = score };
+            HttpClientTest.addTest(test);
+            int idTest = HttpClientTest.GetAll().Max(x => x.id);
+            List<int> QuestionsId = new List<int>();
+            Questions.ForEach(q => QuestionsId.Add(q.Question.id));
+            HttpClientTest.PutQuestion(idTest, QuestionsId);
+            double scorePercent = ((double)((double)score / (double)questionProcesses.Count)) * 100;
+            string result = $"Wynik: {score}/{questionProcesses.Count}, co stanowi: {scorePercent}%";
+            return result;
         }
         public List<Test> getPreviousResultByNick(string nick)
         {

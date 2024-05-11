@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using ZioClient.Model.ModelData;
 using ZioClient.ModelData;
 using ZioClient.WindowManagment;
 using ZioClient.WindowManagment.Interfaces;
+using ZioClient.Windows;
 
 namespace ZioClient
 {
@@ -27,7 +29,25 @@ namespace ZioClient
         {
             InitializeComponent();
             initialize();
+            Paint += new PaintEventHandler(setBackground);
+            groupBox_question.BackColor = Color.Transparent;
+            groupBox_gettingQuestions.BackColor = Color.Transparent;
+            radioButton_answer1.BackColor = Color.Transparent;
+            radioButton_answer2.BackColor = Color.Transparent;
+            radioButton_answer3.BackColor = Color.Transparent;
+            radioButton_answer4.BackColor = Color.Transparent;
+            pictureBox_pictureOfQuestion.BackColor = Color.Transparent;
         }
+
+        private void setBackground(Object sender, PaintEventArgs e)
+        {
+            Graphics graphics = e.Graphics;
+
+            Rectangle rectangle = new Rectangle(0, 0, Width, Height);
+            Brush brush = new LinearGradientBrush(rectangle, Color.FromArgb(100,0,100,0), Color.FromArgb(100,0,0,255), 65f);         
+            graphics.FillRectangle(brush, rectangle);
+        }
+
         private void initialize()
         {
             switchControls();
@@ -79,7 +99,7 @@ namespace ZioClient
                 Settings.Nick = textBox_nick.Text;
                 setQuestion(0);
                 switchControls();
-                dataGridView_results.DataSource = mainWindowManager.getPreviousResultByNick(Settings.Nick);
+                //dataGridView_results.DataSource = mainWindowManager.getPreviousResultByNick(Settings.Nick);
             }
             else
             {
@@ -232,6 +252,27 @@ namespace ZioClient
             if (dialogResult == DialogResult.Yes)
             {
                 reset();
+            }
+        }
+
+        private void btn_results_Click(object sender, EventArgs e)
+        {
+            if (textBox_nick.Text != null && textBox_nick.Text != "")
+            {
+                List<Test> tests = mainWindowManager.getPreviousResultByNick(textBox_nick.Text);
+                if (tests.Count > 0)
+                {
+                    var resultsWindow = new ResultsWindow(tests);
+                    resultsWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Dla danego nicku nie ma wyników bazie", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pole z nazwą użytkownika musi być wypełnione", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

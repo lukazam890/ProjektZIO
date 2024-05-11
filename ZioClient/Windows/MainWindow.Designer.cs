@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.bnt_gettingQuestions = new System.Windows.Forms.Button();
             this.groupBox_gettingQuestions = new System.Windows.Forms.GroupBox();
+            this.btn_results = new System.Windows.Forms.Button();
             this.label_userName = new System.Windows.Forms.Label();
             this.textBox_nick = new System.Windows.Forms.TextBox();
             this.numericUpDown_numberOfQuestions = new System.Windows.Forms.NumericUpDown();
@@ -47,17 +48,15 @@
             this.pictureBox_pictureOfQuestion = new System.Windows.Forms.PictureBox();
             this.label_questionContent = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dataGridView_results = new System.Windows.Forms.DataGridView();
             this.groupBox_gettingQuestions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numberOfQuestions)).BeginInit();
             this.groupBox_question.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_pictureOfQuestion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_results)).BeginInit();
             this.SuspendLayout();
             // 
             // bnt_gettingQuestions
             // 
-            this.bnt_gettingQuestions.Location = new System.Drawing.Point(300, 14);
+            this.bnt_gettingQuestions.Location = new System.Drawing.Point(507, 16);
             this.bnt_gettingQuestions.Name = "bnt_gettingQuestions";
             this.bnt_gettingQuestions.Size = new System.Drawing.Size(75, 23);
             this.bnt_gettingQuestions.TabIndex = 1;
@@ -69,6 +68,7 @@
             // 
             this.groupBox_gettingQuestions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_gettingQuestions.Controls.Add(this.btn_results);
             this.groupBox_gettingQuestions.Controls.Add(this.label_userName);
             this.groupBox_gettingQuestions.Controls.Add(this.textBox_nick);
             this.groupBox_gettingQuestions.Controls.Add(this.numericUpDown_numberOfQuestions);
@@ -79,6 +79,16 @@
             this.groupBox_gettingQuestions.TabIndex = 4;
             this.groupBox_gettingQuestions.TabStop = false;
             this.groupBox_gettingQuestions.Text = "Losowanie";
+            // 
+            // btn_results
+            // 
+            this.btn_results.Location = new System.Drawing.Point(300, 16);
+            this.btn_results.Name = "btn_results";
+            this.btn_results.Size = new System.Drawing.Size(75, 23);
+            this.btn_results.TabIndex = 5;
+            this.btn_results.Text = "Wyniki";
+            this.btn_results.UseVisualStyleBackColor = true;
+            this.btn_results.Click += new System.EventHandler(this.btn_results_Click);
             // 
             // label_userName
             // 
@@ -118,7 +128,6 @@
             this.groupBox_question.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox_question.Controls.Add(this.dataGridView_results);
             this.groupBox_question.Controls.Add(this.label_questionNumberLabel);
             this.groupBox_question.Controls.Add(this.button_reset);
             this.groupBox_question.Controls.Add(this.label_questionNumber);
@@ -132,7 +141,7 @@
             this.groupBox_question.Controls.Add(this.label_questionContent);
             this.groupBox_question.Location = new System.Drawing.Point(12, 70);
             this.groupBox_question.Name = "groupBox_question";
-            this.groupBox_question.Size = new System.Drawing.Size(776, 469);
+            this.groupBox_question.Size = new System.Drawing.Size(776, 388);
             this.groupBox_question.TabIndex = 5;
             this.groupBox_question.TabStop = false;
             this.groupBox_question.Text = "Pytanie";
@@ -141,7 +150,7 @@
             // 
             this.label_questionNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label_questionNumberLabel.AutoSize = true;
-            this.label_questionNumberLabel.Location = new System.Drawing.Point(249, 312);
+            this.label_questionNumberLabel.Location = new System.Drawing.Point(249, 358);
             this.label_questionNumberLabel.Name = "label_questionNumberLabel";
             this.label_questionNumberLabel.Size = new System.Drawing.Size(45, 13);
             this.label_questionNumberLabel.TabIndex = 10;
@@ -150,7 +159,7 @@
             // button_reset
             // 
             this.button_reset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_reset.Location = new System.Drawing.Point(168, 307);
+            this.button_reset.Location = new System.Drawing.Point(168, 353);
             this.button_reset.Name = "button_reset";
             this.button_reset.Size = new System.Drawing.Size(75, 23);
             this.button_reset.TabIndex = 9;
@@ -162,7 +171,7 @@
             // 
             this.label_questionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label_questionNumber.AutoSize = true;
-            this.label_questionNumber.Location = new System.Drawing.Point(300, 312);
+            this.label_questionNumber.Location = new System.Drawing.Point(300, 358);
             this.label_questionNumber.Name = "label_questionNumber";
             this.label_questionNumber.Size = new System.Drawing.Size(26, 13);
             this.label_questionNumber.TabIndex = 9;
@@ -171,7 +180,7 @@
             // bnt_previousQuestion
             // 
             this.bnt_previousQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bnt_previousQuestion.Location = new System.Drawing.Point(6, 307);
+            this.bnt_previousQuestion.Location = new System.Drawing.Point(6, 353);
             this.bnt_previousQuestion.Name = "bnt_previousQuestion";
             this.bnt_previousQuestion.Size = new System.Drawing.Size(75, 23);
             this.bnt_previousQuestion.TabIndex = 7;
@@ -182,7 +191,7 @@
             // bnt_nextQuestion
             // 
             this.bnt_nextQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bnt_nextQuestion.Location = new System.Drawing.Point(87, 307);
+            this.bnt_nextQuestion.Location = new System.Drawing.Point(87, 353);
             this.bnt_nextQuestion.Name = "bnt_nextQuestion";
             this.bnt_nextQuestion.Size = new System.Drawing.Size(75, 23);
             this.bnt_nextQuestion.TabIndex = 8;
@@ -236,7 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_pictureOfQuestion.Location = new System.Drawing.Point(552, 16);
             this.pictureBox_pictureOfQuestion.Name = "pictureBox_pictureOfQuestion";
-            this.pictureBox_pictureOfQuestion.Size = new System.Drawing.Size(218, 314);
+            this.pictureBox_pictureOfQuestion.Size = new System.Drawing.Size(218, 347);
             this.pictureBox_pictureOfQuestion.TabIndex = 1;
             this.pictureBox_pictureOfQuestion.TabStop = false;
             // 
@@ -254,19 +263,11 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // dataGridView_results
-            // 
-            this.dataGridView_results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_results.Location = new System.Drawing.Point(6, 336);
-            this.dataGridView_results.Name = "dataGridView_results";
-            this.dataGridView_results.Size = new System.Drawing.Size(764, 127);
-            this.dataGridView_results.TabIndex = 6;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 551);
+            this.ClientSize = new System.Drawing.Size(800, 470);
             this.Controls.Add(this.groupBox_question);
             this.Controls.Add(this.groupBox_gettingQuestions);
             this.MinimumSize = new System.Drawing.Size(816, 489);
@@ -278,7 +279,6 @@
             this.groupBox_question.ResumeLayout(false);
             this.groupBox_question.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_pictureOfQuestion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_results)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,7 +302,7 @@
         private System.Windows.Forms.Label label_userName;
         private System.Windows.Forms.TextBox textBox_nick;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.DataGridView dataGridView_results;
+        private System.Windows.Forms.Button btn_results;
     }
 }
 
