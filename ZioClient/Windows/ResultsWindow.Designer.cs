@@ -37,15 +37,16 @@
             this.dataGridView_results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_results.Location = new System.Drawing.Point(-2, 1);
             this.dataGridView_results.Name = "dataGridView_results";
-            this.dataGridView_results.Size = new System.Drawing.Size(801, 453);
+            this.dataGridView_results.Size = new System.Drawing.Size(565, 326);
             this.dataGridView_results.TabIndex = 0;
             // 
             // ResultsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 450);
+            this.ClientSize = new System.Drawing.Size(565, 328);
             this.Controls.Add(this.dataGridView_results);
+            this.MinimumSize = new System.Drawing.Size(581, 367);
             this.Name = "ResultsWindow";
             this.Text = "Wyniki";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_results)).EndInit();
