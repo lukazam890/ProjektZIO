@@ -48,6 +48,7 @@
             this.pictureBox_pictureOfQuestion = new System.Windows.Forms.PictureBox();
             this.label_questionContent = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button_Instruction = new System.Windows.Forms.Button();
             this.groupBox_gettingQuestions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numberOfQuestions)).BeginInit();
             this.groupBox_question.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             this.groupBox_gettingQuestions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_gettingQuestions.Controls.Add(this.button_Instruction);
             this.groupBox_gettingQuestions.Controls.Add(this.btn_results);
             this.groupBox_gettingQuestions.Controls.Add(this.label_userName);
             this.groupBox_gettingQuestions.Controls.Add(this.textBox_nick);
@@ -263,6 +265,16 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // button_Instruction
+            // 
+            this.button_Instruction.Location = new System.Drawing.Point(671, 16);
+            this.button_Instruction.Name = "button_Instruction";
+            this.button_Instruction.Size = new System.Drawing.Size(99, 23);
+            this.button_Instruction.TabIndex = 6;
+            this.button_Instruction.Text = "Instrukcja Ie-1";
+            this.button_Instruction.UseVisualStyleBackColor = true;
+            this.button_Instruction.Click += new System.EventHandler(this.button_Instruction_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,6 +315,7 @@
         private System.Windows.Forms.TextBox textBox_nick;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btn_results;
+        private System.Windows.Forms.Button button_Instruction;
     }
 }
 

@@ -30,7 +30,6 @@ namespace ZioClient.ModelData
         public void addTest(Test test)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, url);
-            //request.Headers.Add("access-control-allow-origin", "*");
             var content = new StringContent(JsonSerializer.Serialize(test), Encoding.UTF8, "application/json");
             request.Content = content;
             try

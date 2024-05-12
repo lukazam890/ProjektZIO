@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-//using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -21,88 +20,6 @@ namespace ZioClient.ModelData
         public string responseCommunicat { get; set; } = " ";
 
         private string url = "http://projektzioipp-001-site1.etempurl.com/api/Question";
-
-        //metody nie będą używane po stronie klienta
-
-        /*
-        public void AddQuestion(Question modelData)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Post, url);
-            request.Headers.Add("access-control-allow-origin", "*");
-            var content = new StringContent(JsonSerializer.Serialize(modelData), null, "application/json");
-
-            request.Content = content;
-
-            try
-            {
-                var response = client.SendAsync(request).Result;
-                if (response.Content.ReadAsStringAsync().Result == "0")
-                {
-                    responseCommunicat = "Poprawnie dodano rekord";
-                }
-
-                else
-                {
-                    responseCommunicat = "Operacja dodania rekordu się nie powiodła";
-                }
-            }
-            catch (Exception)
-            {
-                responseCommunicat = "Brak połączenia z webApi";
-            }
-
-        }
-
-          public void Delete(int id)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Delete, url +"/"+id);
-            try
-            {
-                var response = client.SendAsync(request).Result;
-                response.EnsureSuccessStatusCode();
-                if (response.Content.ReadAsStringAsync().Result == "0")
-                {
-                    responseCommunicat = "Usunięto niepotrzebne rekordy";
-                }
-                else
-                {
-                    responseCommunicat = "Nie było rekordów w tej tabeli";
-                }
-            }
-            catch (Exception)
-            {
-                responseCommunicat = "Brak połączenia z serwerem";
-            }
-
-
-        }
-         public void Put(int id, Question newQuestion)
-        {
-            Question question = GetById(id);
-            var request = new HttpRequestMessage(HttpMethod.Put, url+"/"+id);
-            question = newQuestion;
-            var content = new StringContent(JsonSerializer.Serialize(question), null, "application/json");
-            request.Content = content;
-            try
-            {
-                var response = client.SendAsync(request).Result;
-                if (response.Content.ReadAsStringAsync().Result == "0")
-                {
-                    responseCommunicat = "Poprawnie dodano rekord";
-                }
-
-                else
-                {
-                    responseCommunicat = "Operacja dodania rekordu się nie powiodła";
-                }
-            }
-            catch (Exception)
-            {
-                responseCommunicat = "Brak połączenia z webApi";
-            }
-
-        }
-        */
 
         public void AddQuestion(Question modelData)
         {

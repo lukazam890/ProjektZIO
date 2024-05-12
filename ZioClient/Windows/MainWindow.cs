@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -170,8 +171,8 @@ namespace ZioClient
                 if(dialogResult == DialogResult.Yes)
                 {
                     MessageBox.Show(mainWindowManager.testResult(Settings.QuestionsProcess), "Wynik");
+                    reset();
                 }
-                reset();
             }
         }
 
@@ -273,6 +274,11 @@ namespace ZioClient
             {
                 MessageBox.Show("Pole z nazwą użytkownika musi być wypełnione", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button_Instruction_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.plk-sa.pl/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-1__E-1__2020_WCAG_.PDF");
         }
     }
 }

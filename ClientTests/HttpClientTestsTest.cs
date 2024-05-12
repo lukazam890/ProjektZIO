@@ -43,7 +43,6 @@ namespace ClientTests
                     ItExpr.Is<HttpRequestMessage>(req =>
                         req.Method == HttpMethod.Post &&
                         req.RequestUri == new Uri(url) &&
-                        //req.Headers.Contains("access-control-allow-origin") &&
                         req.Content.ReadAsStringAsync().Result == JsonSerializer.Serialize(test, JsonOptions)),
                     ItExpr.IsAny<CancellationToken>()
                 )
